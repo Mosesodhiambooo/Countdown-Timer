@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <title>Lets make the colors change</title>
+
+        <script>
+            
+            document.addEventListener('DOMContentLoaded', function() {
+
+                //Turn the color to Red
+                document.querySelector('#red').onclick = function() {
+                    document.querySelector('Hello').Style.color = 'red';
+                }
+
+                //Turn the color to Blue
+                document.querySelector('#blue').onclick = function() {
+                    document.querySelector('Hello').Style.color = 'blue';
+                }
+
+                //Turn the color to Green
+                document.querySelector('#green').onclick = function() {
+                    document.querySelector('Hello').Style.color = 'green';
+                }
+            });
+        </script>
+    </head>
+    <body>
+    <h1 id="Hello">Hello</h1>
+    <button id="red">Red</button>
+    <button id="blue">Blue</button>
+    <button id="green">Green</button>
+    </body>
+
+</html>
