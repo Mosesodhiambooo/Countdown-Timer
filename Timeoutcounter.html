@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeout Counter</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Timeout Counter</h1>
+<p id="timer">Time Left: <span id="countdown">5</span> seconds</p>
+
+<script>
+  // Function to play the buzzing sound
+  function playBuzzingSound() {
+    var audio = new Audio('buzzing.mp3'); // Path to the buzzing sound file
+    audio.play();
+  }
+
+  // Function to display the danger alert
+  function showAlert() {
+    alert("Danger! Timeout reached.");
+  }
+
+  // Function to start the timeout counter
+  function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+      minutes = parseInt(timer / 1, 10);
+      seconds = parseInt(timer % 10, 10);
+
+      minutes = minutes < 1 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      display.textContent = minutes + ":" + seconds;
+
+      if (--timer < 0) {
+        clearInterval(timerInterval);
+        display.textContent = "00:00"; // Display 00:00 when timer reaches 0
+        playBuzzingSound();
+        showAlert();
+      }
+    }, 1000);
+  }
+
+  window.onload = function () {
+    var tenSeconds = 10, // Set the duration of the timeout in seconds
+      display = document.getElementById('countdown');
+    startTimer(tenSeconds, display);
+  };
+</script>
+
+</body>
+</html>
+
